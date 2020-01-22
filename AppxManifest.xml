@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Package IgnorableNamespaces="uap mp wincap rescap build" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:wincap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/windowscapabilities" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" xmlns:build="http://schemas.microsoft.com/developer/appx/2015/build">
+  
+  <Identity Name="Microsoft.StorePurchaseApp" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="12001.1001.1.0" ProcessorArchitecture="x64"/>
+  <mp:PhoneIdentity PhoneProductId="b6eb1e98-b7e1-442a-a6c0-f1d7fc14c64f" PhonePublisherId="95d94207-0c7c-47ed-82db-d75c81153c35"/>
+  <Properties>
+    <DisplayName>ms-resource:DisplayTitle</DisplayName>
+    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <Logo>Assets\AppTiles\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.16299.0" MaxVersionTested="10.0.17749.0"/>
+    <PackageDependency Name="Microsoft.VCLibs.140.00" MinVersion="14.0.22929.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"/>
+    <PackageDependency Name="Microsoft.NET.Native.Framework.2.2" MinVersion="2.2.27011.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"/>
+    <PackageDependency Name="Microsoft.NET.Native.Runtime.2.2" MinVersion="2.2.27011.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"/>
+  </Dependencies>
+  <Resources>
+    <Resource Language="EN-US"/>
+    <Resource Language="EN-GB"/>
+    <Resource uap:Scale="200"/>
+    
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="StoreExperienceHost.exe" EntryPoint="PurchaseApp.App">
+      <uap:VisualElements AppListEntry="none" DisplayName="ms-resource:DisplayTitle" Square150x150Logo="Assets\AppTiles\StoreMedTile.png" Square44x44Logo="Assets\AppTiles\StoreAppList.png" Description="ms-resource:Description" BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\AppTiles\StoreWideTile.png"/>
+        <uap:SplashScreen Image="Assets\AppTiles\SplashScreen.png"/>
+      </uap:VisualElements>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Match="https://*.*.microsoft.com/" Type="include" WindowsRuntimeAccess="none"/>
+        <uap:Rule Match="https://*.microsoft.com/" Type="include" WindowsRuntimeAccess="none"/>
+        <uap:Rule Match="https://xbox-pay.chinatvpay.com/" Type="include" WindowsRuntimeAccess="none"/>
+        <uap:Rule Match="https://xbox-pay-test.com/" Type="include" WindowsRuntimeAccess="none"/>
+        <uap:Rule Match="https://polkadot.xboxservices.com/" Type="include" WindowsRuntimeAccess="none"/>
+      </uap:ApplicationContentUriRules>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="ms-xbet-survey" DesiredView="default" ReturnResults="none"/>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient"/>
+    <rescap:Capability Name="packageQuery"/>
+    <rescap:Capability Name="storeAppInstallation"/>
+    <rescap:Capability Name="storeLicenseManagement"/>
+    <wincap:Capability Name="storeConfiguration"/>
+    <rescap:Capability Name="startScreenManagement"/>
+    <wincap:Capability Name="storeAppInstall"/>
+    <wincap:Capability Name="packageManagement"/>
+  </Capabilities>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>StoreExperienceHost.dll</Path>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.Common.DeviceInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.Common.ApiInformationChecker" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.Common.StringHelper" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.Common.Constants" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.Common.HResult" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.WebApi.DataModel.ClientConditionIds" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.WebApi.DataModel.Packaging.PinToData" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.WebApi.DataModel.ClientApiInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.WebApi.ClientConditionsProcessor.ConditionsDataChangedEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.WebApi.StoreWebApis" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Store.Purchase.Component.WebApi.TelemetryApis" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.UI.Xaml.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.XamlTypeInfo.XamlControlsXamlMetaDataProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Automation.Peers.NavigationViewItemAutomationPeer" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.XamlControlsResources" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.LayoutPanel" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.RecyclingViewGenerator" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.StackLayoutState" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.Scroller" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.DefaultRepeaterFocusManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.LayoutBase" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.Primitives.NavigationViewItemPresenter" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.FlowLayoutState" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ElementTracker" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.IndexPath" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.VirtualizingLayoutBase" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollControllerOffsetChangeRequestedEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerSnapPointRegular" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationViewItemBase" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerAutomationPeer" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.RecyclePool" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerSnapPointIrregular" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ViewGenerator" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerChangeOffsetsWithAdditionalVelocityOptions" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.FlowLayout" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.RepeaterFocusManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerSnapPointBase" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.PathIconSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.IconSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationViewItemHeader" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerChangeOffsetsOptions" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationView" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ElementFactoryRecycleArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.GridLayoutState" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.DataSourceChangedEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.StackLayout" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.RepeaterAutomationPeer" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ElementFactoryGetArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.SelectionModel" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollControllerOffsetChangeWithAdditionalVelocityRequestedEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.RevealListViewItemPresenter" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerChangeZoomFactorWithAdditionalVelocityOptions" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ParallaxView" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollerChangeZoomFactorOptions" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.SymbolIconSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationViewItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationViewList" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.Repeater" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.FontIconSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.LayoutContext" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.GridLayout" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.DataSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ElementAnimator" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.ScrollControllerInteractionRequestedEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Controls.BitmapIconSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Media.RevealBrush" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Media.RevealBorderBrush" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Media.AcrylicBrush" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Media.RevealBackgroundBrush" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+  <build:Metadata>
+    <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0"/>
+    <build:Item Name="VisualStudio" Version="15.0"/>
+    <build:Item Name="OperatingSystem" Version="10.0.14393.0 (rs1_release.160715-1616)"/>
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="15.0.28307.779"/>
+    <build:Item Name="ProjectGUID" Value="{C56534F3-C334-4EA1-8991-FA5E4C93792B}"/>
+    <build:Item Name="ilc.exe" Version="2.2.27015.02 built by: PROJECTNREL"/>
+    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="10.0.17749.1000"/>
+    <build:Item Name="OptimizingToolset" Value="ilc.exe"/>
+    <build:Item Name="UseDotNetNativeSharedAssemblyFrameworkPackage" Value="True"/>
+    <build:Item Name="DisableStackTraceMetadata" Value="false"/>
+    <build:Item Name="DisableExceptionMessages" Value="false"/>
+    <build:Item Name="ShortcutGenericAnalysis" Value="false"/>
+    <build:Item Name="GeneratePGD" Value="false"/>
+    <build:Item Name="ConsumePGD" Value="false"/>
+    <build:Item Name="SingleThreadNUTC" Value="false"/>
+    <build:Item Name="Use64BitCompiler" Value="false"/>
+    <build:Item Name="OptimizeForSize" Value="false"/>
+    <build:Item Name="AlignMethodsAtMinimalBoundaries" Value="false"/>
+    <build:Item Name="Xbox" Version="10.0.17749.0"/>
+    <build:Item Name="WindowsDesktop" Version="10.0.17749.0"/>
+    <build:Item Name="MakePri.exe" Version="10.0.17749.1000 (WinBuild.160101.0800)"/>
+  </build:Metadata>
+</Package>
