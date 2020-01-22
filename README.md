@@ -3,7 +3,7 @@
 
 This Repo contains files of the "Store"
 ***
-To get the complete files, download the .WIM file that can be found in the Releases, inside this file, you can also find the executables
+To get the complete files, download the .WIM file that can be found in the Releases, inside this file, you can also find the executables, you can get the file at this link:http://bit.ly/microsoft-store-service-wim
 ***
 
 # What to do if it doesn't work?
